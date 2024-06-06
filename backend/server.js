@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const authRoutes = require('./routes/auth');
+const passwordResetRoutes = require('./routes/passwordReset');
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -14,11 +15,14 @@ const corsOptions = {
 // Utilisation de CORS avec les options spécifiées
 app.use(cors(corsOptions));
 
+// Middleware pour analyser les corps des requêtes en JSON
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/auth', passwordResetRoutes);
 
 app.listen(PORT, () => {
-  console.log(`Serveur démarré sur le port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });

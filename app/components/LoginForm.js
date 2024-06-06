@@ -1,5 +1,3 @@
-// app/components/LoginForm.js
-
 "use client";
 
 import React, { useState } from 'react';
@@ -93,16 +91,22 @@ const Links = styled.div`
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const router = useRouter(); // Utilisation de useRouter
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:4000/api/auth/login', { email, mot_de_passe: password });
-      router.push('/dashboard'); // Redirection vers le tableau de bord
+      localStorage.setItem('user', JSON.stringify(response.data.user));
+      router.push('/dashboard');
     } catch (error) {
       alert(error.response.data);
     }
+  };
+
+  const handleForgotPassword = (e) => {
+    e.preventDefault();
+    router.push('/forgot-password');
   };
 
   return (
@@ -124,7 +128,7 @@ const LoginForm = () => {
           <Button type="submit">Se connecter</Button>
         </Form>
         <Links>
-          <a href="#">Mot de passe oublié ?</a>
+          <Link href="/forgot-password">Mot de passe oublié ?</Link>
           <Link href="/register">S'inscrire</Link>
         </Links>
       </FormWrapper>

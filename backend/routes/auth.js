@@ -1,9 +1,11 @@
-// backend/routes/auth.js
 const express = require('express');
 const router = express.Router();
 const db = require('../config/db');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const saltRounds = 10;
+
+const SECRET_KEY = 'EIpKUpg0L7ceeRFNLUImx2UriRTeIZ5ko070hynlcOI'; // Changez cela par une clé secrète plus sécurisée
 
 // Inscription
 router.post('/register', (req, res) => {
@@ -56,7 +58,10 @@ router.post('/login', (req, res) => {
         return res.status(400).send('Mot de passe incorrect.');
       }
 
-      res.status(200).send('Connexion réussie.');
+      // Générer un token JWT
+      const token = jwt.sign({ id: user.id, email: user.email, nom: user.nom }, SECRET_KEY, { expiresIn: '1h' });
+
+      res.status(200).json({ token, user: { id: user.id, email: user.email, nom: user.nom } });
     });
   });
 });
