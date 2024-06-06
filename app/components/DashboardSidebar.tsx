@@ -92,12 +92,14 @@ const DashboardSidebar = () => {
       <div>
         <SidebarTitle>RED PRODUCT</SidebarTitle>
         <SidebarItem>
-          <Link href="/dashboard">
-            <div>
-              <Icon src="/dashboard-icon.png" alt="Dashboard Icon" />
-              Dashboard
-            </div>
-          </Link>
+        <Link href="/dashboard" passHref>
+  <a>
+    <div>
+      <Icon src="/dashboard-icon.png" alt="Dashboard Icon" />
+      Dashboard
+    </div>
+  </a>
+</Link>
         </SidebarItem>
         <SidebarItem>
         <Link href="/dashboard/hotels">
