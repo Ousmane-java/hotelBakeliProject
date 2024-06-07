@@ -1,12 +1,8 @@
-// app/components/SignupForm.js
-
-"use client";
-
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import axios from 'axios';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/router'; // Mettez à jour l'import
 
 const SignupFormContainer = styled.div`
   display: flex;
@@ -125,7 +121,7 @@ const SignupForm = () => {
     <SignupFormContainer>
       <FormWrapper>
         <Title>
-          <img src="/icon.png" alt="Icon" width="30" height="30" /> RED PRODUCT
+          <img src="/logo.png" alt="Icon" width="30" height="30" /> RED PRODUCT
         </Title>
         <Subtitle>Inscrivez-vous</Subtitle>
         {error && <p style={{ color: 'red' }}>{error}</p>}
@@ -151,7 +147,7 @@ const SignupForm = () => {
           <Button type="submit">S'inscrire</Button>
         </Form>
         <Links>
-          <Link href="/">Se connecter</Link>
+          <Link href="login">Se connecter</Link>
         </Links>
       </FormWrapper>
     </SignupFormContainer>

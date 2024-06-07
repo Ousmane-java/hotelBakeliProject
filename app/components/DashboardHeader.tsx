@@ -1,13 +1,16 @@
+import axios from 'axios';
 import React from 'react';
 import styled from 'styled-components';
+import { NextRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: white; /* Changement de la couleur de la barre en blanc */
-  color: black; /* Changement de la couleur du texte en noir */
+  background-color: white;
+  color: black;
 `;
 
 const HeaderTitle = styled.h1`
@@ -40,15 +43,40 @@ const ProfileImage = styled.img`
   height: 40px;
 `;
 
+const handleLogout = async (router: NextRouter | string[]) => {
+  try {
+    await axios.post('/api/logout');
+    await axios.post('/api/clear-session');
+  } catch (error) {
+    console.error('Erreur lors de la déconnexion :', error);
+  }
+
+  router.push('/login');
+};
+
+const LogoutButton = () => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    handleLogout(router);
+  };
+
+  return (
+    <Icon src="/logout-icon.png" alt="Logout" onClick={handleClick} />
+  );
+};
+
 const DashboardHeader = () => {
+  const router = useRouter();
+
   return (
     <HeaderContainer>
-      <HeaderTitle style={{ color: 'black' }}>Dashboard</HeaderTitle> {/* Changement de la couleur du texte "Dashboard" en noir */}
+      <HeaderTitle style={{ color: 'black' }}>Dashboard</HeaderTitle>
       <ProfileContainer>
         <SearchInput type="text" placeholder="Rechercher..." />
         <Icon src="/notification-icon.jpeg" alt="Notifications" />
         <ProfileImage src="/profile.JPG" alt="Profile" />
-        <Icon src="/logout-icon.jpeg" alt="Logout" />
+        <LogoutButton /> {/* Utilisation du composant LogoutButton */}
       </ProfileContainer>
     </HeaderContainer>
   );

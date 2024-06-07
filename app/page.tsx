@@ -1,13 +1,12 @@
-// app/page.tsx
+import React from 'react';
 
-"use client";
-
-import LoginForm from './components/LoginForm';
-
-export default function Home() {
+const HomePage = () => {
   return (
-    <main>
-      <LoginForm />
-    </main>
+    <div>
+      <h1>Bienvenue sur RED PRODUCT</h1>
+      <p>Bienvenue sur votre tableau de bord.</p>
+    </div>
   );
-}
+};
+
+export default HomePage;

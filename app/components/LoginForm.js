@@ -1,10 +1,8 @@
-"use client";
-
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import axios from 'axios';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/router'; // Mettez à jour l'import
 
 const LoginFormContainer = styled.div`
   display: flex;
@@ -91,29 +89,24 @@ const Links = styled.div`
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const router = useRouter();
+  const router = useRouter(); // Mettez à jour l'import
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:4000/api/auth/login', { email, mot_de_passe: password });
       localStorage.setItem('user', JSON.stringify(response.data.user));
-      router.push('/dashboard');
+      router.push('/dashboard'); // Mettez à jour la redirection vers '/dashboard'
     } catch (error) {
       alert(error.response.data);
     }
-  };
-
-  const handleForgotPassword = (e) => {
-    e.preventDefault();
-    router.push('/forgot-password');
   };
 
   return (
     <LoginFormContainer>
       <FormWrapper>
         <Title>
-          <img src="/logo.jpeg" alt="Icon" width="30" height="30" /> RED PRODUCT
+          <img src="/logo.png" alt="Icon" width="30" height="30" /> RED PRODUCT
         </Title>
         <Subtitle>Connectez-vous en tant qu'admin</Subtitle>
         <Form onSubmit={handleSubmit}>
@@ -128,8 +121,8 @@ const LoginForm = () => {
           <Button type="submit">Se connecter</Button>
         </Form>
         <Links>
-          <Link href="/forgot-password">Mot de passe oublié ?</Link>
-          <Link href="/register">S'inscrire</Link>
+          <Link href="/forgot-password">Mot de passe oublié ?</Link> {/* Mettez à jour le lien */}
+          <Link href="/signup">S'inscrire</Link> {/* Mettez à jour le lien */}
         </Links>
       </FormWrapper>
     </LoginFormContainer>

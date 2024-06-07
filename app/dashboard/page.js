@@ -1,10 +1,11 @@
+// pages/dashboard.js
 "use client";
 
 import React from 'react';
 import styled from 'styled-components';
 import DashboardSidebar from '../components/DashboardSidebar';
 import DashboardHeader from '../components/DashboardHeader';
-import InfoCard from '../components/InfoCard';
+import InfoCard from '../components/HotelCard';
 
 const DashboardLayout = styled.div`
   display: flex;
@@ -19,7 +20,7 @@ const MainContent = styled.div`
 const CardsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 2rem;
 `;
 
@@ -34,9 +35,13 @@ const Dashboard = () => {
           <p>Bienvenue sur votre tableau de bord.</p>
         </div>
         <CardsContainer>
-          <InfoCard icon="/hotel-icon.png" number="212" text="Hôtels" />
-          <InfoCard icon="/user-icon.png" number="1500" text="Utilisateurs" />
-          <InfoCard icon="/booking-icon.png" number="320" text="Réservations" />
+          <InfoCard image="/span.w-488.png" number="212" text="Hôtels" />
+          <InfoCard image="/span.w-48.png" number="1500" text="Utilisateurs" />
+          <InfoCard image="/span.w.png" number="320" text="Réservations" />
+          
+          <InfoCard image="/span.png" number="212" text="Hôtels" />
+          <InfoCard image="/span.w1.png" number="1500" text="Utilisateurs" />
+          <InfoCard image="/span.w.png" number="320" text="Réservations" />
           {/* Ajoutez plus de cartes selon vos besoins */}
         </CardsContainer>
       </MainContent>

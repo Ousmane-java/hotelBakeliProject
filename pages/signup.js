@@ -1,8 +1,8 @@
-// app/register/page.js
+// pages/signup.js
 
 "use client";
 
-import SignupForm from '../components/SignupForm';
+import SignupForm from '../app/components/SignupForm';
 
 export default function Register() {
   return (

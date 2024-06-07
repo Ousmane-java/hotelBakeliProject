@@ -1,22 +1,12 @@
-// pages/forgot-password.tsx
-
+// pages/forgot-password.js
 import React from 'react';
-import axios from 'axios';
+import ForgotPasswordForm from '../app/components/ForgotPasswordForm'; // Assurez-vous que ce chemin est correct
 
-const ForgotPasswordPage: React.FC = () => {
-  const handleSubmit = async () => {
-    try {
-      const response = await axios.post('http://localhost:4000/api/auth/forgot-password', { email: 'user@example.com' });
-      console.log(response.data);
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
-
+const ForgotPasswordPage = () => {
   return (
     <div>
-      <h1>Forgot Password Page</h1>
-      <button onClick={handleSubmit}>Send Password Reset Email</button>
+      <h1>Mot de passe oublié</h1>
+      <ForgotPasswordForm />
     </div>
   );
 };

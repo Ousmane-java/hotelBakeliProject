@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 
 const SidebarContainer = styled.div`
-  width: 250px;
+  width: 500px;
   height: 100vh;
   background-color: #55595C;
   color: white;
@@ -14,9 +14,20 @@ const SidebarContainer = styled.div`
 `;
 
 const SidebarTitle = styled.h2`
+  display: flex;
+  align-items: center;
   font-size: 1.5rem;
   color: white;
   margin-bottom: 2rem;
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: #ccc;
+    margin: 0 1rem;
+  }
 `;
 
 const SidebarItem = styled.div`
@@ -47,6 +58,7 @@ const ProfileContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-top: -10px; /* Réglage pour déplacer légèrement vers le haut */
 `;
 
 const ProfileImage = styled.img`
@@ -59,10 +71,12 @@ const ProfileDetails = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-top: -10px; /* Réglage pour déplacer légèrement vers le haut */
 `;
 
 const ProfileName = styled.p`
   margin: 0;
+  margin-bottom: 5px; /* Espacement entre le nom et le statut en ligne */
 `;
 
 const OnlineStatus = styled.span`
@@ -90,21 +104,25 @@ const DashboardSidebar = () => {
   return (
     <SidebarContainer>
       <div>
-        <SidebarTitle>RED PRODUCT</SidebarTitle>
+        <SidebarTitle>
+          <Icon src="/logo.png" alt="Red Product Icon" />
+          RED PRODUCT
+        </SidebarTitle>
         <SidebarItem>
-        <Link href="/dashboard" passHref>
-  <a>
-    <div>
-      <Icon src="/dashboard-icon.png" alt="Dashboard Icon" />
-      Dashboard
-    </div>
-  </a>
-</Link>
+          <Link href="/dashboard" passHref>
+            <div style={{ marginTop: '100px' }}> {/* Réglage pour déplacer vers le bas */}
+              <Icon src="/dashboard-icon.png" alt="Dashboard Icon" />
+              Dashboard
+            </div>
+          </Link>
         </SidebarItem>
         <SidebarItem>
-        <Link href="/dashboard/hotels">
-          <a>Liste des Hôtels</a>
-        </Link>
+          <Link href="/dashboard/hotels" passHref>
+            <div style={{ marginTop: '10px' }}> {/* Réglage pour déplacer vers le bas */}
+              <Icon src="/hotels-icon.png" alt="Hotels Icon" /> {/* Ajout de l'icône pour les hôtels */}
+              Liste des Hôtels
+            </div>
+          </Link>
         </SidebarItem>
       </div>
       <ProfileContainer>

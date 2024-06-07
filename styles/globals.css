@@ -1,0 +1,17 @@
+/* styles/globals.css */
+
+/* Réinitialisation des styles */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style de base pour le corps */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Ajoutez vos autres styles globaux ici */
